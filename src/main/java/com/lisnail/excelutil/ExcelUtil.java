@@ -1,8 +1,7 @@
-package com.lisnail.util;
+package com.lisnail.excelutil;
 
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.sl.usermodel.Sheet;
 import org.apache.poi.ss.util.CellRangeAddress;
 
 import java.io.*;
@@ -53,18 +52,18 @@ public class ExcelUtil<T> {
         HSSFCellStyle captionStyle = setCellStyle(workbook, TITLE_CELL);
         HSSFRow row = sheet.createRow(rowStart - 3);
         HSSFCell cell1 = row.createCell(1);
-        cell1.setCellValue("机构名称：");
+        cell1.setCellValue("名称：");
         cell1.setCellStyle(captionStyle);
         cell1 = row.createCell(2);
-        cell1.setCellValue("深圳市随手科技有限公司");
+        cell1.setCellValue("lisnail");
         cell1.setCellStyle(captionStyle);
         //cell1.setCellStyle(getCaptionStyle());
         row = sheet.createRow(rowStart - 2);
         HSSFCell cell2 = row.createCell(1);
-        cell2.setCellValue("社会信用代码：");
+        cell2.setCellValue("id：");
         cell2.setCellStyle(captionStyle);
         cell2 = row.createCell(2);
-        cell2.setCellValue("914403005788211472");
+        cell2.setCellValue("123");
         cell2.setCellStyle(captionStyle);
     }
 
@@ -113,6 +112,7 @@ public class ExcelUtil<T> {
             style.setWrapText(true);
             // 生成内容字体
             HSSFFont font = workbook.createFont();
+            font.setFontName("宋体");
             font.setBoldweight(HSSFFont.BOLDWEIGHT_NORMAL);
             style.setFont(font);
         } else if (cellType == TITLE_CELL) {
@@ -331,7 +331,6 @@ public class ExcelUtil<T> {
         }
 
     }
-
 
     private static String joinPath(String url, String path) {
         String filePath;
